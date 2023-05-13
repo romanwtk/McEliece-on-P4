@@ -1,0 +1,41 @@
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
+% !BIB program = bibtex
+
+%%% Um einen Artikel auf deutsch zu schreiben, genügt es die Klasse ohne
+%%% Parameter zu laden.
+\documentclass[utf8, biblatex]{lni}
+%%% To write an article in English, please use the option ``english'' in order
+%%% to get the correct hyphenation patterns and terms.
+%%% \documentclass[english]{class}
+%%
+
+\bibliography{literature}
+
+\begin{document}
+%%% Mehrere Autoren werden durch \and voneinander getrennt.
+%%% Die Fußnote enthält die Adresse sowie eine E-Mail-Adresse.
+%%% Das optionale Argument (sofern angegeben) wird für die Kopfzeile verwendet.
+\title[Ein Kurztitel]{Implementierung des McEliece-Kryptosystems auf P4-programmierbaren Switches}
+%%%\subtitle{Untertitel / Subtitle} % if needed
+\author[Roman Wetenkamp]
+{Roman Wetenkamp\footnote{Duale Hochschule Baden-Württemberg Mannheim\\ \email{s200376@student.dhbw-mannheim.de}}}
+\startpage{1} % Beginn der Seitenzählung für diesen Beitrag / Start page
+\editor{} % Names of Editors
+\booktitle{SKILL 2023} % Name of book title
+\yearofpublication{2023}
+%%%\lnidoi{18.18420/provided-by-editor-02} % if known
+\maketitle
+\begin{abstract}
+This is a brief overview of the paper, which should be 70 to 150 words long and
+include the most relevant points. This has to be a single paragraph.
+\end{abstract}
+\begin{keywords}
+McEliece \and Code-basierte Kryptography \and Programmierbare Switches
+\end{keywords}
+%%% Beginn des Artikeltexts
+\section{Einführung}
+Seitdem die Aussicht auf einen Quantencomputer, der bisher in der Kryptographie verwendete Probleme wie jenes des \textit{diskreten Logarithmus} oder der \textit{Primfaktorzerlegung} für große Zahlen deutlich effizienter brechen kann als Computer mit herkömmlichen Prozessoren, immer realistischer wird, nimmt die Forschung zur \textit{Post-Quanten-Kryptographie} stetig zu. Neben Verfahren, die auf Gittern oder multivariaten Polynomen basieren, gelten auch einige \textit{code-basierte Verfahren} als quantensicher und sind somit beispielsweise Teil eines Standardisierungsprozesses des National Institute of Standards and Technology (NIST) in den USA \cite{NISTPQC3}. Diese Kryptosysteme nutzen lineare, fehlerkorrigierende Codes wie \textit{verallgemeinerte Reed-Solomon-Codes} oder \textit{Goppa-Codes} und deren \textit{Dekodierproblem} aus, das darin besteht, dass es hinreichend schwierig ist, von einem durch eine permutierte und verwürfelte Generatormatrix erzeugten Codewort auf die ursprünglich verwendete Generatormatrix zurückzuschließen \cite{Berlekamp1978}. Eines der ersten und bekanntesten code-basierten Kryptosysteme ist jenes von \textsc{McEliece} \cite{McEliece1978}, dessen Implementierung die erste Hauptkomponente dieser Arbeit darstellt.\\
+Die zweite Komponente ergibt sich durch \textit{programmierbare Switches}. Während Verschlüsselungsoperationen von Netzwerkdatenpaketen typischerweise im Endgerät (beispielsweise einem Server oder einem Client) ausgeführt werden, ergibt sich mit programmierbaren Switches eine Möglichkeit, die Daten im Switch zu verschlüsseln. \\Diese Arbeit widmet sich der Fragestellung, inwiefern das \textsc{McEliece}-Kryptosystem in programmierbaren Switches implementiert werden kann. Zunächst werden in Abschnitt \ref{S2} die Hintergründe beider Technologien erläutert, bevor in Abschnitt \ref{S3} die Umsetzung in der Domänen-spezifischen Sprache \textit{P4} erfolgt. Die Ergebnisse werden abschließend anhand einer Switch-Emulation reflektiert und zusammengefasst.
+\printbibliography
+\end{document}
